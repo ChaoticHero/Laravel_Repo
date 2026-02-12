@@ -3,10 +3,15 @@
         Job
     </x-slot:heading>
 
-    <h2 class="font-bold text-lg">{{ $job['title'] }}</h2>
+    <ul>
 
-    <p>
-        This job pays {{$job['salary'] }} per year.
-    </p>
+            <li>
+                <a href="/jobs/{{ $job['id'] }}" class="text-blue-500 hover:underline">
+                    <strong>{{ $job['title'] }};</strong> pays {{ $job['salary'] }} per year
+                </a>
+            </li>
+
+    </ul>
+
 </x-layout>
 
