@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->id();
+            $table->integer('user_id');
             $table->timestamps();
+            $table->text('bio');
+            $table->id();
+            $table->string('avatar')->nullable();
         });
     }
 

@@ -22,7 +22,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
-            'description' => 'nullable',
+            'bio' => 'nullable',
             'image' => 'nullable|image'
         ]);
 
@@ -33,5 +33,10 @@ class ProjectController extends Controller
         Auth::user()->projects()->create($data);
 
         return redirect()->route('projects.index');
+    }
+
+    public function dashboard() {
+    $images = Image::all(); // Or however you've named your model
+    return view('dashboard', compact('images'));
     }
 }

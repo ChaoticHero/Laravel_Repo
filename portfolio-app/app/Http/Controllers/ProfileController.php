@@ -8,13 +8,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+// use Illuminate\Database\Eloquent\Model->__get();
 
 class ProfileController extends Controller
 {
+    public function index() {
+    // Get the currently authenticated user
+    $user = auth()->user(); 
+    return view('dashboard', compact('user'));
+}
     public function edit()
     {
-        $profile = Auth::user()->profile;
-        return view('profile.edit', compact('profile'));
+        $profiles = Auth::user()->profile;
+
+
+        $user = Auth::user();
+        return view('profile.edit', compact('profiles', 'user'));
     }
 
     public function update(Request $request)
